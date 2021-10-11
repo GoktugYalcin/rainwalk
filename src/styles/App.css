@@ -1,0 +1,47 @@
+.video-background {
+    position: relative;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    width: 100vw;
+    height: 100vh;
+    top: -8px;
+    left: -8px;
+    z-index: 0;
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+  
+  .video-background iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130vw;
+    height: 130vh;
+    margin-top: 8px;
+    margin-left: 8px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  @media (min-aspect-ratio: 16/9) {
+    .video-background iframe {
+      height: 56.25vw;
+    }
+  }
+  @media (max-aspect-ratio: 16/9) {
+    .video-background iframe {
+      width: 177.78vh;
+    }
+  }
+
+  body{
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+  }
+
+  .tooltip{
+      position: absolute;
+      top: 2%;
+      left: 96%;
+      z-index: 1;
+  }
