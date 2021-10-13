@@ -82,6 +82,7 @@ const App = () => {
       </div>
       <ReactPlayer url={video} 
       volume={volume}
+      playing={true}
       config={{
         youtube: {
           playerVars: {
