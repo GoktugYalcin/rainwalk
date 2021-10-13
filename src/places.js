@@ -1,67 +1,67 @@
 const places = [
     {
         place: "Istanbul, TR",
-        link: "G1BlRPQmxaE"
+        link: "https://www.youtube.com/watch?v=G1BlRPQmxaE"
     },
     {
         place: "Boston, US",
-        link: "JB0A8Me8EKk"
+        link: "https://www.youtube.com/watch?v=JB0A8Me8EKk"
     },
     {
         place: "London, UK",
-        link: "N787WRdI35A"
+        link: "https://www.youtube.com/watch?v=N787WRdI35A"
     },
     {
         place: "Amsterdam, NE",
-        link: "N0af7_w5GBQ?t=9"
+        link: "https://www.youtube.com/watch?v=DR_owCQ-2PY"
     },
     {
         place: "Paris, FR",
-        link: "z1rub7NjjPI"
+        link: "https://www.youtube.com/watch?v=z1rub7NjjPI"
     },
     {
         place: "Madrid, SP",
-        link: "TScr2bIJVv0"
+        link: "https://www.youtube.com/watch?v=TScr2bIJVv0"
     },
     {
         place: "Tokyo, JP",
-        link: "Et7O5-CzJZg?t=10"
+        link: "https://www.youtube.com/watch?v=JvoX86Epz1w"
     },
     {
         place: "Beijing, CN",
-        link: "3_RezoBB8Zg"
+        link: "https://www.youtube.com/watch?v=3_RezoBB8Zg"
     },
     {
         place: "Phnom Penh, CM",
-        link: "q9h3Enzx3-U"
+        link: "https://www.youtube.com/watch?v=q9h3Enzx3-U"
     },
     {
-        place: "Dublin, IR",
-        link: "YeGvn6cewjY?t=8"
+        place: "Liverpool, UK",
+        link: "https://www.youtube.com/watch?v=44hLEhmglL8"
     },
     {
         place: "New York, US",
-        link: "BOa0zQBRs_M"
+        link: "https://www.youtube.com/watch?v=BOa0zQBRs_M"
     },
     {
         place: "Düsseldorf, GE",
-        link: "jGSNAgC7dhM"
+        link: "https://www.youtube.com/watch?v=IqlkrFb6cc8"
     },
     {
         place: "Helsinki, FL",
-        link: "YQ6KCESCXAc"
+        link: "https://www.youtube.com/watch?v=YQ6KCESCXAc"
     },
     {
         place: "Vancouver, CA",
-        link: "6xK4DozhDtE?t=16"
+        link: "https://www.youtube.com/watch?v=4ra2QSsfzkM"
     },
     {
         place: "Ilsan, KO",
-        link: "PR516WiXDgQ"
+        link: "https://www.youtube.com/watch?v=PR516WiXDgQ"
     },
     {
         place: "Melbourne, AU",
-        link: "BKEN7f5qRBU"
+        link: "https://www.youtube.com/watch?v=BKEN7f5qRBU"
     }
 ]
 
