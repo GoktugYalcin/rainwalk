@@ -41,8 +41,9 @@ const App = () => {
   const getRadioStations = (video) => {
     const filter = {
       limit: 10,
-      by: "codec",
-      searchterm: "mp3"
+      codec: "mp3",
+      by: "country",
+      searchterm: video.country
     }
     return RadioBrowser.getStations(filter)
   }
@@ -58,29 +59,28 @@ const App = () => {
   return(
     <>
       <div className="video-background">
-      <div className="tooltip">
-      <Button type="primary" style={{"background-color": "#C9A690", "border": "0"}} icon={<MenuOutlined />} size={'large'} onClick={showDrawer} />
-      <Drawer title="☂RainWalk Menu" size={"large"} placement="right" onClose={onClose} visible={visible}>
-        <Divider>Select the city</Divider>
-          <Select defaultValue={video.place} style={{ "margin-left": "30%", "margin-bottom": "10%", width: 180 }} size={ "large" } onChange={(e) => handleOnChange(e)}>
-            {places.map((value, index) => {
-              return(<Option key={index} value={index}> {value.place} </Option>)
-            })}
-          </Select>
-        <Divider>Change the volume</Divider>
-        <Slider defaultValue={50} onChange={(value) => {setVolume(value/100)}} />
-        <Divider style={{"marginTop": "10%"}}>Radio Controls</Divider>
-          <div style={{"display": "flex", "justifyContent": "center", "width": "100%"}}>
-          <Space size={100} >
-            <BackwardOutlined style={{"fontSize": "40px"}} onClick={()=>{setIndex(stationIndex === 0 ? (0) : (stationIndex-1)); setStation(stations[stationIndex]); document.getElementById('radio').play();}} />
-            <label>{station ? (station.name) : ("Not Found Any Stations")}</label>
-            <ForwardOutlined style={{"fontSize": "40px"}} onClick={()=>{setIndex(stationIndex === stations.length ? (stations.length) : (stationIndex+1)); setStation(stations[stationIndex]); document.getElementById('radio').play();}} />
-          </Space>
-          </div>
-          <Slider defaultValue={0} onChange={(value) => {setVolumeRadio(value/100); document.getElementById('radio').volume=volumeRadio}} />
-          {/*  */}
-      </Drawer>
-      </div>
+        <div className="tooltip">
+          <Button type="primary" style={{"background-color": "#C9A690", "border": "0"}} icon={<MenuOutlined />} size={'large'} onClick={showDrawer} />
+          <Drawer title="☂RainWalk Menu" size={"large"} placement="right" onClose={onClose} visible={visible}>
+            <Divider>Select the city</Divider>
+              <Select defaultValue={video.place} style={{ "margin-left": "30%", "margin-bottom": "10%", width: 180 }} size={ "large" } onChange={(e) => handleOnChange(e)}>
+                {places.map((value, index) => {
+                  return(<Option key={index} value={index}> {value.place} </Option>)
+                })}
+              </Select>
+            <Divider>Change the volume</Divider>
+            <Slider defaultValue={50} onChange={(value) => {setVolume(value/100)}} />
+            <Divider style={{"marginTop": "10%"}}>Radio Controls</Divider>
+              <div style={{"display": "flex", "justifyContent": "center", "width": "100%"}}>
+                <Space size={100} >
+                  <BackwardOutlined style={{"fontSize": "40px"}} onClick={()=>{setIndex(stationIndex === 0 ? (0) : (stationIndex-1)); setStation(stations[stationIndex]); document.getElementById('radio').play();}} />
+                  <label>{station && (station.name)}</label>
+                  <ForwardOutlined style={{"fontSize": "40px"}} onClick={()=>{setIndex(stationIndex === stations.length ? (stations.length) : (stationIndex+1)); setStation(stations[stationIndex]); document.getElementById('radio').play();}} />
+                </Space>
+              </div>
+              <Slider defaultValue={0} onChange={(value) => {setVolumeRadio(value/100); document.getElementById('radio').volume=volumeRadio}} />
+          </Drawer>
+        </div>
       <ReactPlayer url={video.link} 
       volume={volume}
       playing={true}

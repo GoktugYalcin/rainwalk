@@ -12,12 +12,12 @@ const places = [
     {
         place: "London, UK",
         link: "https://www.youtube.com/watch?v=N787WRdI35A",
-        country: "The United Kingdom Of Great Britain And Northern Ireland" //buna bak
+        country: "The United Kingdom Of Great Britain And Northern Ireland"
     },
     {
         place: "Amsterdam, NE",
         link: "https://www.youtube.com/watch?v=DR_owCQ-2PY",
-        country: "ned" //buna da bak
+        country: "The Netherlands"
     },
     {
         place: "Paris, FR",
@@ -27,7 +27,7 @@ const places = [
     {
         place: "Madrid, SP",
         link: "https://www.youtube.com/watch?v=TScr2bIJVv0",
-        country: "Spain" //buna da bak
+        country: "Spain"
     },
     {
         place: "Tokyo, JP",
@@ -42,7 +42,7 @@ const places = [
     {
         place: "Phnom Penh, KM",
         link: "https://www.youtube.com/watch?v=q9h3Enzx3-U",
-        country: "Cambodia" // buna da bak
+        country: "Cambodia"
     },
     {
         place: "Liverpool, UK",
@@ -57,12 +57,12 @@ const places = [
     {
         place: "Düsseldorf, GE",
         link: "https://www.youtube.com/watch?v=IqlkrFb6cc8",
-        country: "Germany" //buna da bak
+        country: "Germany"
     },
     {
         place: "Helsinki, FL",
         link: "https://www.youtube.com/watch?v=YQ6KCESCXAc",
-        country: "Finland" //buna da bak
+        country: "Finland"
     },
     {
         place: "Vancouver, CA",

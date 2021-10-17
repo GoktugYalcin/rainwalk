@@ -49,3 +49,12 @@
   .ant-drawer-content-wrapper{
     width: 500px !important;
   }
+
+  .ant-drawer-wrapper-body{
+    background: #272838;
+    color: white;
+  }
+
+  .ant-divider-inner-text{
+    color: white
+  }
