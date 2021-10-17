@@ -52,7 +52,8 @@ const App = () => {
     console.log(value)
     console.log(value);
     setVideo(places[value]);
-    getRadioStations(places[value]).then((fetch)=>{console.log(fetch);setIndex(0);setStations(fetch);setStation(stations[stationIndex])});
+    getRadioStations(places[value]).then((fetch)=>{console.log(fetch);setIndex(0);setStations(fetch);});
+    setStation(stations[stationIndex])
     setVisible(false);
   }
 
