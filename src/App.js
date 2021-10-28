@@ -103,7 +103,7 @@ const App = () => {
                             }
                           }} 
                         />
-      ) : (<div className="placeholder-container"><p className="placeholder-text">Just choose the city <br />and start to experience</p><img src={arrowIcon} className="img-container" /></div>)}
+      ) : (<div className="placeholder-container"><p className="placeholder-text">Just choose the city <br />and start to experience</p><img src={arrowIcon} alt="icon" className="img-container" /></div>)}
       
       </div>
       <audio controls id={"radio"} src={station ? station.url_resolved : "http://cheetah.streemlion.com:1320/stream"} autoPlay> </audio>
