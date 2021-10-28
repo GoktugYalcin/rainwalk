@@ -15,6 +15,7 @@ const App = () => {
   const [visible, setVisible] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [muted, setMuted] = useState(1);
+  const [playing, setPlaying] = useState(false);
 
   const [stations, setStations] = useState([]);
   const [stationIndex, setIndex] = useState(0);
@@ -84,14 +85,13 @@ const App = () => {
         </div>
       <ReactPlayer url={video.link} 
       volume={volume}
-      playing={true}
-      onReady={()=>{setMuted(0)}}
+      playing={playing}
+      onReady={()=>{setMuted(0); setTimeout(()=>{setPlaying(true)}, 400)}}
       className='react-player'
       config={{
         youtube: {
           playerVars: {
             rel: 0,
-            autoplay: 1,
             controls: 0,
             disablekb: 1,
             modestbranding: 1,
