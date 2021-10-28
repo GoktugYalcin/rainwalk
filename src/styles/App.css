@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
 .video-background {
-    position: relative;
     overflow-x: hidden !important;
     overflow-y: hidden !important;
     width: 100vw;
@@ -22,6 +23,34 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
   }
+
+  .placeholder-container{
+    background: #ba9984;
+    /* C9A690 */
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bolder;
+    font-size: 35px;
+    top: -2px;
+    left: -2px;
+  }
+
+  .placeholder-text{
+    margin-bottom: 100px;
+  }
+  
+  .img-container{
+    height: 150px;
+    transform: rotate(311deg);
+    margin-top: -106px;
+    margin-left: -16px;
+  }
   
   @media (min-aspect-ratio: 16/9) {
     .video-background iframe {
@@ -42,7 +71,7 @@
   .tooltip{
       position: absolute;
       top: 2%;
-      left: 96%;
+      left: 1%;
       z-index: 1;
   }
 

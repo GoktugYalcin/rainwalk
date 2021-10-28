@@ -6,16 +6,16 @@ import 'antd/dist/antd.css';
 import { Button, Drawer, Select, Divider, Slider, Space } from 'antd';
 import { MenuOutlined, BackwardOutlined, ForwardOutlined } from '@ant-design/icons';
 import RadioBrowser from 'radio-browser'
+import icon from './arrow.svg'
 
 const { Option } = Select
 
 const App = () => {
 
-  const [video, setVideo] = useState(places[0]);
+  const [video, setVideo] = useState(null);
   const [visible, setVisible] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [muted, setMuted] = useState(1);
-  const [playing, setPlaying] = useState(false);
 
   const [stations, setStations] = useState([]);
   const [stationIndex, setIndex] = useState(0);
@@ -63,9 +63,9 @@ const App = () => {
       <div className="video-background">
         <div className="tooltip">
           <Button type="primary" style={{"background-color": "#C9A690", "border": "0"}} icon={<MenuOutlined />} size={'large'} onClick={showDrawer} />
-          <Drawer title="☂RainWalk Menu" size={"large"} placement="right" onClose={onClose} visible={visible}>
+          <Drawer title="☂RainWalk Menu" size={"large"} placement="left" onClose={onClose} visible={visible}>
             <Divider>Select the city</Divider>
-              <Select defaultValue={video.place} style={{ "margin-left": "30%", "margin-bottom": "10%", width: 180 }} size={ "large" } onChange={(e) => handleOnChange(e)}>
+              <Select style={{ "margin-left": "30%", "margin-bottom": "10%", width: 180 }} size={ "large" } onChange={(e) => handleOnChange(e)}>
                 {places.map((value, index) => {
                   return(<Option key={index} value={index}> {value.place} </Option>)
                 })}
@@ -83,26 +83,28 @@ const App = () => {
               <Slider defaultValue={0} onChange={(value) => {setVolumeRadio(value/100); document.getElementById('radio').volume=volumeRadio}} />
           </Drawer>
         </div>
-      <ReactPlayer url={video.link} 
-      volume={volume}
-      playing={playing}
-      onReady={()=>{setMuted(0); setTimeout(()=>{setPlaying(true)}, 400)}}
-      className='react-player'
-      config={{
-        youtube: {
-          playerVars: {
-            rel: 0,
-            controls: 0,
-            disablekb: 1,
-            modestbranding: 1,
-            showinfo: 0,
-            autohide: 1,
-            loop: 1,
-            muted: muted
-          }
-        }
-      }} 
-      />
+        {video?.link ? (<ReactPlayer url={video.link} 
+                          volume={volume}
+                          playing={true}
+                          onReady={()=>{setMuted(0);}}
+                          className='react-player'
+                          config={{
+                            youtube: {
+                              playerVars: {
+                                rel: 0,
+                                controls: 0,
+                                disablekb: 1,
+                                modestbranding: 1,
+                                showinfo: 0,
+                                autohide: 1,
+                                loop: 1,
+                                muted: muted
+                              }
+                            }
+                          }} 
+                        />
+      ) : (<div className="placeholder-container"><p className="placeholder-text">Just choose the city <br />and start to experience</p><img src={icon} className="img-container" /></div>)}
+      
       </div>
       <audio controls id={"radio"} src={station ? station.url_resolved : "http://cheetah.streemlion.com:1320/stream"} autoPlay> </audio>
     </>
