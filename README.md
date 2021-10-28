@@ -20,3 +20,7 @@ Used react-player, radio-browser and antd when developing.
 ## Features
 
 You can change countries and cities, radio channels depends on country too. Also, you can adjust volumes of video and radio seperatly.
+
+## __Future__
+- Better radio implemention
+- MongoDB integration
