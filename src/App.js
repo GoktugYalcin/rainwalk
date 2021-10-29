@@ -50,10 +50,8 @@ const App = () => {
   }
 
   const handleOnChange = (value) => {
-    console.log(value)
-    console.log(value);
     setVideo(places[value]);
-    getRadioStations(places[value]).then((fetch)=>{console.log(fetch);setIndex(0);setStations(fetch);});
+    getRadioStations(places[value]).then((fetch)=>{setIndex(0);setStations(fetch);});
     setStation(stations[stationIndex])
     setVisible(false);
   }
@@ -62,10 +60,10 @@ const App = () => {
     <>
       <div className="video-background">
         <div className="tooltip">
-          <Button type="primary" style={{"background-color": "#C9A690", "border": "0"}} icon={<MenuOutlined />} size={'large'} onClick={showDrawer} />
+          <Button type="primary" style={{"backgroundColor": "#C9A690", "border": "0"}} icon={<MenuOutlined />} size={'large'} onClick={showDrawer} />
           <Drawer title="☂RainWalk Menu" size={"large"} placement="left" onClose={onClose} visible={visible}>
             <Divider>Select the city</Divider>
-              <Select style={{ "margin-left": "30%", "margin-bottom": "10%", width: 180 }} size={ "large" } onChange={(e) => handleOnChange(e)}>
+              <Select style={{ "marginLeft": "30%", "marginBottom": "10%", width: 180 }} size={ "large" } onChange={(e) => handleOnChange(e)}>
                 {places.map((value, index) => {
                   return(<Option key={index} value={index}> {value.place} </Option>)
                 })}
@@ -76,7 +74,7 @@ const App = () => {
               <div style={{"display": "flex", "justifyContent": "center", "width": "100%"}}>
                 <Space size={100} >
                   <BackwardOutlined style={{"fontSize": "40px"}} onClick={()=>{setIndex(stationIndex === 0 ? (0) : (stationIndex-1)); setStation(stations[stationIndex]); document.getElementById('radio').play();}} />
-                  <label>{station && (station.name)}</label>
+                  <label>{station && (station.name.length >= 20 ? (station.name.slice(0,20)+'...') : (station.name))}</label>
                   <ForwardOutlined style={{"fontSize": "40px"}} onClick={()=>{setIndex(stationIndex === stations.length ? (stations.length) : (stationIndex+1)); setStation(stations[stationIndex]); document.getElementById('radio').play();}} />
                 </Space>
               </div>
@@ -106,7 +104,7 @@ const App = () => {
       ) : (<div className="placeholder-container"><p className="placeholder-text">Just choose the city <br />and start to experience</p><img src={arrowIcon} alt="icon" className="img-container" /></div>)}
       
       </div>
-      <audio controls id={"radio"} src={station ? station.url_resolved : "http://cheetah.streemlion.com:1320/stream"} autoPlay> </audio>
+      <audio id={"radio"} src={station ? station.url_resolved : "http://cheetah.streemlion.com:1320/stream"} autoPlay> </audio>
     </>
   )
 }

@@ -87,3 +87,32 @@
   .ant-divider-inner-text{
     color: white
   }
+
+
+  @media (min-width:320px)  {
+    .ant-drawer-content-wrapper{
+      width: 381px !important;
+    }
+    .ant-select{
+      margin-left: 23% !important;
+      margin-bottom: 10%;
+      width: 180px;
+    }
+    
+    .video-background{
+      height: 101vh !important;
+    }
+
+    .placeholder-text{
+      margin-left: 18px !important;
+      width: 400px !important;
+    }
+
+    .img-container{
+      margin-right: 53px !important;
+    }
+
+    body {
+      position: fixed;
+    }
+  }
