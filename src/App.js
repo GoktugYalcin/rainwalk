@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
 import ReactPlayer from 'react-player'
-import places from "./places";
-import './styles/App.css';
-import 'antd/dist/antd.css';
-import { Button, Drawer, Select, Divider, Slider, Space } from 'antd';
-import { MenuOutlined, BackwardOutlined, ForwardOutlined } from '@ant-design/icons';
+import { Button, Drawer, Select, Divider, Slider, Space } from 'antd'
+import { MenuOutlined, BackwardOutlined, ForwardOutlined } from '@ant-design/icons'
 import RadioBrowser from 'radio-browser'
+import places from "./places"
+import './styles/App.css'
+import 'antd/dist/antd.css'
 
 const { Option } = Select
 
@@ -31,6 +31,11 @@ const App = () => {
       document.getElementById('radio').volume = 0
     })
   }, [])
+
+  useEffect(() => {
+    volumeRadio === 0 ? document.getElementById('radio').muted = true : document.getElementById('radio').muted = false
+  }, [volumeRadio])
+
 
   const showDrawer = () => {
     setVisible(true);
