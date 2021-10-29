@@ -24,4 +24,4 @@ You can change countries and cities, radio channels depends on country too. Also
 ## __Future__
 - Better radio implemention
 - MongoDB integration
-- Responsive UI at least for mobile(not landscape) 
+- __Responsive UI at least for mobile(not landscape)__ - *29.10.21*
