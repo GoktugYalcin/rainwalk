@@ -77,9 +77,9 @@ const App = () => {
             <Slider defaultValue={50} onChange={(value) => {setVolume(value/100)}} />
             <Divider style={{"marginTop": "10%"}}>Radio Controls</Divider>
               <div style={{"display": "flex", "justifyContent": "center", "width": "100%"}}>
-                <Space size={100} >
+                <Space size={"small"} >
                   <BackwardOutlined style={{"fontSize": "40px"}} onClick={()=>{setIndex(stationIndex === 0 ? (0) : (stationIndex-1)); setStation(stations[stationIndex]); document.getElementById('radio').play();}} />
-                  <label>{station && (station.name.length >= 20 ? (station.name.slice(0,20)+'...') : (station.name))}</label>
+                  <p>{station && (station.name.length >= 20 ? (station.name.slice(0,20)+'...') : (station.name))}</p>
                   <ForwardOutlined style={{"fontSize": "40px"}} onClick={()=>{setIndex(stationIndex === stations.length ? (stations.length) : (stationIndex+1)); setStation(stations[stationIndex]); document.getElementById('radio').play();}} />
                 </Space>
               </div>
