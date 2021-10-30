@@ -88,6 +88,10 @@
     color: white
   }
 
+  .ant-space{
+    gap: 65px !important;
+  }
+
 
   @media (min-width:320px)  {
     .ant-drawer-content-wrapper{

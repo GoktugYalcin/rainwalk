@@ -32,11 +32,6 @@ const App = () => {
     })
   }, [])
 
-  useEffect(() => {
-    volumeRadio === 0 ? document.getElementById('radio').muted = true : document.getElementById('radio').muted = false
-  }, [volumeRadio])
-
-
   const showDrawer = () => {
     setVisible(true);
   };
