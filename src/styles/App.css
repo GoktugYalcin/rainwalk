@@ -11,7 +11,27 @@
     margin-top: 8px;
     margin-left: 8px;
   }
+
+  .rhap_container{
+    background: #272838;
+    box-shadow: none;
+  }
+
+  .rhap_header{
+    text-align: center;
+  }
   
+  .rhap_volume-bar-area{
+    width: 200px;
+  }
+
+  .rhap_volume-container{
+    margin-top: 10px;
+  }
+
+  .rhap_controls-section{
+    flex-direction: column;
+  }
   .video-background iframe {
     position: absolute;
     top: 50%;
@@ -49,7 +69,7 @@
     height: 150px;
     transform: rotate(311deg);
     margin-top: -106px;
-    margin-left: -16px;
+    margin-left: -80px;
   }
   
   @media (min-aspect-ratio: 16/9) {
