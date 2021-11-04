@@ -86,7 +86,6 @@ const App = () => {
                      ref={player}
                      volume={volume}
                      playing={true}
-                     onReady={()=>{setMuted(1);}}
                      className='react-player'
                      config={{
                        youtube: {
