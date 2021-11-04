@@ -61,7 +61,7 @@ const App = () => {
               </Select>
             <Divider>Change the volume</Divider>
             <Slider defaultValue={0} onChange={(value) => {setVolume(value/100)}} />
-            {stations.length !== 0 ?
+            {video !== null ?
             <>
             <Divider style={{"marginTop": "10%"}}>Radio Controls</Divider>
             <AudioPlayer
