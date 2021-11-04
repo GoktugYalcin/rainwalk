@@ -20,7 +20,7 @@
   .rhap_header{
     text-align: center;
   }
-  
+
   .rhap_volume-bar-area{
     width: 200px;
   }
@@ -64,14 +64,14 @@
   .placeholder-text{
     margin-bottom: 100px;
   }
-  
+
   .img-container{
     height: 150px;
     transform: rotate(311deg);
     margin-top: -106px;
     margin-left: -80px;
   }
-  
+
   @media (min-aspect-ratio: 16/9) {
     .video-background iframe {
       height: 56.25vw;
@@ -122,7 +122,7 @@
       margin-bottom: 10%;
       width: 180px;
     }
-    
+
     .video-background{
       height: 101vh !important;
       width: 101vw !important;
@@ -143,5 +143,9 @@
 
     .tooltip{
       touch-action: manipulation;
+    }
+
+    .rhap_volume-controls{
+      display: none;
     }
   }
