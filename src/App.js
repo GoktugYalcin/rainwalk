@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createRef} from "react";
+import React, {useState, createRef} from "react";
 import ReactPlayer from 'react-player'
 import { Button, Drawer, Select, Divider, Slider } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
@@ -47,15 +47,11 @@ const App = () => {
     setVisible(false);
   }
 
-  useEffect(()=>{
-    getRadioStations(places[0]).then((fetch)=>{setIndex(0);setStations(fetch);setStation(stations[stationIndex]);});
-  }, [])
-
   return(
     <>
       <div className="video-background">
         <div className="tooltip">
-          <Button type="primary" style={{"backgroundColor": "#668F80", "border": "0"}} icon={<MenuOutlined />} size={'large'} onClick={showDrawer} />
+          <Button type="primary" style={{'backgroundColor': "#668F80", "border": "0"}} icon={<MenuOutlined />} size={'large'} onClick={showDrawer} />
           <Drawer title="☂ RainWalk Menu" size={"large"} placement="left" onClose={onClose} visible={visible}>
             <Divider>Select the city</Divider>
               <Select style={{ "marginLeft": "30%", "marginBottom": "10%", width: 180 }} defaultValue={0} size={ "large" } onChange={(e) => handleOnChange(e)}>
