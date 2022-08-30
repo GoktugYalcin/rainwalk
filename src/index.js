@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {Provider} from "react-redux";
+import store from "./store";
+import './styles/index.scss';
+import 'react-h5-audio-player/lib/styles.css';
+
 
 ReactDOM.render(
-  <React.Fragment>
+  <Provider store={store}>
     <App />
-  </React.Fragment>,
+  </Provider>,
   document.getElementById('root')
 );
 
