@@ -1,4 +1,5 @@
 export const SET_VOLUME = 'RAINWALK/SET_VOLUME'
+export const SET_SELECTED_RADIO = 'RAINWALK/SET_SELECTED_RADIO'
 
 export function updateVolume(data) {
     return {

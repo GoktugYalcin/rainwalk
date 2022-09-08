@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 .rainwalk {
   &-main {
@@ -12,8 +12,7 @@
   }
 
   &__button {
-    margin-top: 10px;
-    margin-right: 10px;
+    padding: 10px;
   }
 
   &__city {
@@ -21,14 +20,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding: 12px;
       background: #00000008;
       border-radius: 10px;
+      max-height: 170px;
+      overflow: scroll;
+      overflow-x: hidden;
 
       &-disabled {
         @extend .rainwalk__city-select;
-        background: #CED4DA;
+        background: #ced4da;
         pointer-events: none;
       }
 
@@ -56,7 +58,6 @@
     height: 100%;
     pointer-events: none;
 
-
     @keyframes back {
       from {
         background-size: 50% 50%;
@@ -82,22 +83,46 @@
 }
 
 iframe {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  left:0;
-  pointer-events:none;
-  width:100%;
-  height:56.25vw;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 56.25vw;
 }
 
 html {
   font: {
-    family: 'Poppins', sans-serif;
+    family: "Poppins", sans-serif;
   }
 }
 
 #yt-player {
   width: 100%;
   height: 100%;
+}
+
+.rhap_progress-section {
+  display: flex;
+  justify-content: center !important;
+}
+
+.rhap_controls-section {
+  display: flex;
+  justify-content: center !important;
+}
+
+.rhap_volume-controls {
+  display: flex;
+  justify-content: center !important;
+}
+
+.rhap_header {
+  display: flex;
+  justify-content: center !important;
+}
+
+.rhap_volume-bar-area {
+  width: 200px !important;
 }
