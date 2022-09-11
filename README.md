@@ -1,6 +1,6 @@
-# Rainwalk
+# ☂Rainwalk
 
-An app for concentrate to work -at least for me :)-
+An app for concentrate to work -at least for me- 🙃
 <br /><br />
 
 ## Installation
@@ -8,24 +8,14 @@ You can get the repo from [GitHub](https://github.com/GoktugYalcin/rainwalk)
 
 After the fetch, you can type code -which in below- on terminal.
 
-    $npm install
-    $npm run
+    yarn && yarn start
 
-And... It is ready to go! 🚀
+And... It is ready to go on port 3000! 🚀
 
 ## Used Packages
 
-Used react-player, radio-browser and antd when developing.
+Used __[react-h5-audio-player](https://github.com/lhz516/react-h5-audio-player)__, __[Axios](https://github.com/axios/axios)__, __[Mantine](https://github.com/mantinedev/mantine)__ and __[Ant Design](https://github.com/ant-design/ant-design)__ when developing.
 
-## Features
-
-You can change countries and cities, radio channels depends on country too. Also, you can adjust volumes of video and radio seperatly.
-
-## Known Issues
-
-- __Radio stations not applies on initialize__
-
-## __Future__
-- Better radio implemention
-- MongoDB integration
-- __Responsive UI at least for mobile(not landscape)__ - *29.10.21*
+## __Future Path__
+- Better radio implemention with Firebase
+- __Responsive UI at least for mobile__
