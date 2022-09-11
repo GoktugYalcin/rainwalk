@@ -14,7 +14,7 @@ const initialState = {
     {
       link: "https://www.youtube.com/watch?v=N787WRdI35A&t=118s",
       label: "London, United Kingdom",
-      countryCode: "UK",
+      countryCode: "GB",
     },
     {
       link: "https://youtu.be/PZ5SQbXBwhg?t=30",

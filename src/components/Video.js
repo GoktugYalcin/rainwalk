@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import { updateIsFetching } from "../modules/IsFetchingReducer";
+import { fetchStations, updateIsFetching } from "../modules/IsFetchingReducer";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,7 +7,6 @@ import {
   updateRadios,
   updateSelected,
 } from "../modules/DrawerReducer";
-import { RadioBrowserApi } from "radio-browser-api";
 
 export const Video = () => {
   const dispatch = useDispatch();
@@ -15,6 +14,7 @@ export const Video = () => {
   const isFetching = useSelector((state) => state.isFetching);
   const selectedIndex = useSelector((state) => state.selectedIndex);
   const volume = useSelector((state) => state.volume);
+  const radioChannels = useSelector((state) => state.radioChannels);
 
   return (
     <div className="rainwalk-main">
@@ -44,21 +44,12 @@ export const Video = () => {
             dispatch(updateSelected(selectedIndex + 1));
             dispatch(updateRadios([]));
             dispatch(updateCurrentRadio(null));
-            const api = new RadioBrowserApi("RainWalk");
-            api
-              .searchStations({
-                countryCode: locations[selectedIndex + 1].countryCode,
-                limit: 20,
-                offset: 0,
-                tagList: ["pop", "rock"],
-                tagExact: true,
-                hideBroken: true,
-                order: "random",
-              })
-              .then((stations) => {
-                dispatch(updateRadios(stations));
-                dispatch(updateCurrentRadio(0));
-              });
+            fetchStations(selectedIndex, (radios) => {
+              dispatch(updateRadios(radios));
+              dispatch(updateCurrentRadio(0));
+
+              console.log(radioChannels[selectedIndex]);
+            });
           }}
           config={{
             youtube: {

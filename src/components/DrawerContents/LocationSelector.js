@@ -4,9 +4,9 @@ import {
   updateRadios,
   updateSelected,
 } from "../../modules/DrawerReducer";
-import { RadioBrowserApi } from "radio-browser-api";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchStations } from "../../modules/IsFetchingReducer";
 
 const LocationSelector = () => {
   const dispatch = useDispatch();
@@ -38,21 +38,11 @@ const LocationSelector = () => {
                 dispatch(updateSelected(index));
                 dispatch(updateRadios([]));
                 dispatch(updateCurrentRadio(null));
-                const api = new RadioBrowserApi("RainWalk");
-                api
-                  .searchStations({
-                    countryCode: locations[index].countryCode,
-                    limit: 20,
-                    offset: 0,
-                    tagList: ["pop", "rock"],
-                    tagExact: true,
-                    hideBroken: true,
-                    order: "random",
-                  })
-                  .then((stations) => {
-                    dispatch(updateRadios(stations));
-                    dispatch(updateCurrentRadio(0));
-                  });
+                fetchStations(selectedIndex, (radios) => {
+                  console.log(radios);
+                  dispatch(updateRadios(radios));
+                  dispatch(updateCurrentRadio(0));
+                });
               }}
             >
               {location.label}

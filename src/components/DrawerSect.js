@@ -6,7 +6,7 @@ import LocationSelector from "./DrawerContents/LocationSelector";
 import VideoVolume from "./DrawerContents/VideoVolume";
 import LocationRadio from "./DrawerContents/LocationRadio";
 
-export const DrawerSect = ({ radioRef }) => {
+export const DrawerSect = () => {
   const dispatch = useDispatch();
   const isDrawerOpen = useSelector((state) => state.isDrawerOpen);
 

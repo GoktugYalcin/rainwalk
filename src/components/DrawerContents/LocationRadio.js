@@ -15,7 +15,7 @@ const LocationRadio = () => {
       </Group>
       <div
         className={
-          radioChannels[currentRadio]?.urlResolved
+          radioChannels[currentRadio]?.url_resolved
             ? "rainwalk__radio"
             : "rainwalk__radio-disabled"
         }
@@ -23,7 +23,7 @@ const LocationRadio = () => {
         <AudioPlayer
           style={{ borderRadius: "1rem" }}
           autoPlay
-          src={radioChannels[currentRadio]?.urlResolved}
+          src={radioChannels[currentRadio]?.url_resolved}
           showSkipControls={true}
           showJumpControls={false}
           customAdditionalControls={[]}
@@ -36,17 +36,17 @@ const LocationRadio = () => {
           }
           footer={null}
           onClickPrevious={(currentTrack) => {
-            if (radioChannels[currentRadio - 1]?.urlResolved) {
+            if (radioChannels[currentRadio - 1]?.url_resolved) {
               dispatch(updateCurrentRadio(currentRadio - 1));
             }
           }}
           onClickNext={(currentTrack) => {
-            if (radioChannels[currentRadio + 1]?.urlResolved) {
+            if (radioChannels[currentRadio + 1]?.url_resolved) {
               dispatch(updateCurrentRadio(currentRadio + 1));
             }
           }}
           onEnded={(currentTrack) => {
-            if (radioChannels[currentRadio + 1]?.urlResolved) {
+            if (radioChannels[currentRadio + 1]?.url_resolved) {
               dispatch(updateCurrentRadio(currentRadio + 1));
             }
           }}
