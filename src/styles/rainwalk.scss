@@ -44,6 +44,7 @@
         &-selected {
           @extend .rainwalk__city-select_location;
           border-radius: 10px;
+          color: #fff;
           background: #12b886;
         }
       }
@@ -125,4 +126,22 @@ html {
 
 .rhap_volume-bar-area {
   width: 200px !important;
+}
+
+.rainwalk__devinfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+
+  a {
+    color: #000;
+    transition: font-weight 250ms ease-in-out;
+
+    &:hover {
+      transition: font-weight 250ms ease-in-out;
+      font: {
+        weight: 500;
+      }
+    }
+  }
 }

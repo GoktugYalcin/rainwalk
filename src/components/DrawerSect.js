@@ -5,6 +5,7 @@ import { updateIsDrawerOpen } from "../modules/DrawerReducer";
 import LocationSelector from "./DrawerContents/LocationSelector";
 import VideoVolume from "./DrawerContents/VideoVolume";
 import LocationRadio from "./DrawerContents/LocationRadio";
+import DevInfo from "./DrawerContents/DevInfo";
 
 export const DrawerSect = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export const DrawerSect = () => {
       placement={"left"}
       width={500}
       open={isDrawerOpen}
+      footer={<DevInfo />}
     >
       <LocationSelector />
       <VideoVolume />
