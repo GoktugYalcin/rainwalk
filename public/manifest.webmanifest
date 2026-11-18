@@ -2,11 +2,17 @@
   "name": "Rainwalk",
   "short_name": "Rainwalk",
   "description": "Dünya şehirlerinde yağmurlu yürüyüşler ve canlı yerel radyo ile odaklan.",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#120f0c",
   "theme_color": "#120f0c",
   "icons": [
-    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
-  ]
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "scope": "."
 }
