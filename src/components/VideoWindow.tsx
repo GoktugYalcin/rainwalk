@@ -48,6 +48,10 @@ export function VideoWindow() {
   const player = useRef<YTPlayer | null>(null);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
+  /** Last time we unmuted; a pause right after it means the browser refused sound (iOS). */
+  const unmutedAt = useRef(0);
+  const soundBlocked = useRef(false);
+  const everPlayed = useRef(false);
 
   // create player once
   useEffect(() => {
@@ -61,14 +65,37 @@ export function VideoWindow() {
         videoId: city.videoId,
         playerVars: {
           autoplay: 1, mute: 1, controls: 0, playsinline: 1, rel: 0,
-          iv_load_policy: 3, disablekb: 1, fs: 0, start: city.start,
+          iv_load_policy: 3, disablekb: 1, fs: 0, cc_load_policy: 0, start: city.start,
         },
         events: {
-          onReady: () => { setReady(true); player.current?.playVideo(); },
+          onReady: () => { setReady(true); player.current?.mute(); player.current?.playVideo(); },
           onStateChange: (e: { data: number }) => {
-            if (e.data === 1) setPlaying(true);
-            if (e.data === 3 || e.data === -1) setPlaying(false);
-            if (e.data === 0) useStore.getState().stepCity(1);
+            const p = player.current;
+            switch (e.data) {
+              case 1: // playing
+                everPlayed.current = true;
+                setPlaying(true);
+                break;
+              case 2: // paused — the user can't pause the walk, so this is the browser
+                setPlaying(false);
+                if (!p) break;
+                if (Date.now() - unmutedAt.current < 2000 && !soundBlocked.current) {
+                  // iOS pauses inline video that gains sound without a tap inside the frame
+                  soundBlocked.current = true;
+                  useStore.getState().showToast("Bu tarayıcı video sesine izin vermiyor, sokak sesi kapalı");
+                  p.mute();
+                }
+                p.playVideo();
+                break;
+              case -1: case 5: // unstarted / cued: autoplay was blocked, keep nudging muted
+                if (!everPlayed.current) setPlaying(false);
+                p?.mute();
+                p?.playVideo();
+                break;
+              case 0: // ended
+                useStore.getState().stepCity(1);
+                break;
+            }
           },
           onError: () => {
             const s = useStore.getState();
@@ -86,6 +113,7 @@ export function VideoWindow() {
   useEffect(() => {
     if (!ready || !player.current) return;
     setPlaying(false);
+    everPlayed.current = false;
     player.current.loadVideoById({ videoId: city.videoId, startSeconds: city.start });
   }, [city.videoId, city.start, ready]);
 
@@ -93,14 +121,25 @@ export function VideoWindow() {
   useEffect(() => {
     const p = player.current;
     if (!ready || !p) return;
-    if (!started || muted || street === 0) p.mute();
-    else { p.unMute(); p.setVolume(Math.round(street * 100)); }
-  }, [ready, started, street, muted]);
+    if (!started || !playing || muted || street === 0 || soundBlocked.current) p.mute();
+    else {
+      unmutedAt.current = Date.now();
+      p.unMute();
+      p.setVolume(Math.round(street * 100));
+    }
+  }, [ready, started, street, muted, playing]);
+
+  // resume after the tab/app comes back to the foreground
+  useEffect(() => {
+    const onVis = () => { if (document.visibilityState === "visible") player.current?.playVideo(); };
+    document.addEventListener("visibilitychange", onVis);
+    return () => document.removeEventListener("visibilitychange", onVis);
+  }, []);
 
   return (
     <div className="window__media">
       <RainScene hue={city.hue} still={reduceMotion} className={`window__scene ${playing ? "is-hidden" : ""}`} />
-      {!PREVIEW && <div ref={host} className={`window__yt ${playing ? "is-on" : ""}`} />}
+      {!PREVIEW && <div ref={host} className={`window__yt ${playing ? "is-on" : ""}`} aria-hidden="true" />}
     </div>
   );
 }

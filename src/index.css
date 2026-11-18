@@ -180,9 +180,10 @@ h1, h2, p { margin: 0; }
 .window__media { position: absolute; inset: 0; }
 .window__scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transition: opacity 1.4s var(--ease); }
 .window__scene.is-hidden { opacity: 0; }
-.window__yt { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s var(--ease); }
+/* The walk is ambient: no taps reach YouTube's own UI, playback is driven from the app. */
+.window__yt { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s var(--ease); pointer-events: none; user-select: none; }
 .window__yt.is-on { opacity: 1; }
-.window__yt iframe { width: 100%; height: 100%; border: 0; display: block; }
+.window__yt iframe { width: 100%; height: 100%; border: 0; display: block; pointer-events: none; }
 .window__badge {
   position: absolute; left: 14px; top: 14px; max-width: calc(100% - 28px);
   padding: 6px 10px; border-radius: 99px; font-size: 10px; color: var(--text-2);
@@ -507,15 +508,16 @@ h1, h2, p { margin: 0; }
     --vid-h: calc((100vw - 24px) * 9 / 16);
     grid-template-rows: auto auto minmax(0, 1fr);
     gap: 12px;
-    padding: max(10px, env(safe-area-inset-top)) 12px calc(84px + env(safe-area-inset-bottom));
+    padding: max(10px, env(safe-area-inset-top)) 12px calc(88px + max(12px, env(safe-area-inset-bottom)));
   }
   .topbar { grid-template-columns: 1fr auto; min-height: 44px; overflow: visible; }
   .topbar__nav {
     position: fixed; z-index: 20;
     left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom));
-    justify-content: space-between; border-radius: 22px; padding: 6px;
+    justify-content: space-between; align-items: stretch; gap: 4px; border-radius: 24px; padding: 5px;
   }
-  .tab { flex: 1; flex-direction: column; gap: 3px; height: 52px; padding: 0; border-radius: 16px; font-size: 11px; }
+  .tab { flex: 1 1 0; min-width: 0; flex-direction: column; justify-content: center; align-items: center; gap: 4px; height: 54px; padding: 0; border-radius: 16px; font-size: 11px; line-height: 1; }
+  .tab svg { flex: none; }
   .tab .mono { font-size: 11px; }
   .stage, .app[data-panel="true"] .stage { display: block; }
   .window { container-type: inline-size; }
@@ -525,7 +527,7 @@ h1, h2, p { margin: 0; }
     position: fixed; z-index: 15;
     left: 12px; right: 12px;
     top: calc(max(10px, env(safe-area-inset-top)) + 56px + var(--vid-h) + 12px);
-    bottom: calc(84px + env(safe-area-inset-bottom));
+    bottom: calc(88px + max(12px, env(safe-area-inset-bottom)));
     transform: translateY(24px);
     pointer-events: none;
     background: var(--surface-solid);
@@ -535,7 +537,9 @@ h1, h2, p { margin: 0; }
   .panel__head { padding: 16px 10px 8px 18px; }
   .panel__title { font-size: 26px; }
   .panel__body { padding: 4px 14px 18px; }
-  .bottom { grid-template-columns: 1fr; align-items: start; align-content: start; gap: 16px; }
+  /* caption under the video, player docked in the thumb zone right above the tab bar */
+  .bottom { display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; gap: 16px; min-height: 0; }
+  .app[data-focus="true"] .bottom { justify-content: flex-start; }
   .caption { padding-left: 2px; }
   .caption__city { font-size: 46px; }
   .dock { min-width: 0; width: 100%; }
@@ -548,6 +552,7 @@ h1, h2, p { margin: 0; }
   .splash__lede { font-size: 15.5px; }
 }
 @media (max-width: 420px) {
-  .dock__controls .ibtn { display: none; }
+  .dock { gap: 10px; }
+  .dock__controls .ibtn:first-child { display: none; }
   .dock__fav { display: none; }
 }
